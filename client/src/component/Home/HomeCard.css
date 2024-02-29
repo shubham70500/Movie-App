@@ -1,0 +1,53 @@
+.cont{ 
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    scrollbar-width: thin;
+    height: 400px;
+}
+.cont::-webkit-scrollbar{
+    display: none;
+}
+.movie-card:hover{
+    transform: scale(1.05);
+}
+.movie-card{
+    transition: transform 0.2s;
+    flex: 0 0 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.movie-card-content{
+    margin-top: 200px;
+}
+.movie-card-content h2{
+    color: #ccc;
+    text-decoration: none;
+}
+.movie-card-content p{
+    color: #ccc;
+}
+.movie-card-content button{
+    background-color:#09054a ;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:768px) {
+    .cont{
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+    .movie-card{
+        margin-right: 0;
+        margin-bottom: 10px
+    }
+}

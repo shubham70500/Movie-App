@@ -1,0 +1,60 @@
+
+.movie-details{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px;
+}
+.header{
+    margin-bottom: 20px;
+}
+.header h3{
+    margin: 0;
+    color: #333;
+}
+.info-section{
+    margin-bottom: 15px;
+}
+.info-label{
+    font-weight: bold;
+    color: #333;
+}
+.watch-now-btn{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.watch-now-btn a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.image img{
+    width: 500px; 
+    height: 300px;
+}
+@media only screen and (max-width:768px) {
+    .movie-details{
+        flex-direction: column;
+        margin: 10px;
+    }
+    .image{
+        /* width: 50%; */
+        order: 1;
+    }
+    .details-section{
+        /* width: 50%; */
+        order: 2;
+    }
+    .image img{
+        margin-top: 10px;
+        max-width: 100%;
+        height: 300px;
+    }
+}

@@ -1,0 +1,35 @@
+.comment-section{
+    margin-top: 20px;
+}
+.comment{
+    margin-bottom: 10px;
+}
+.comment strong{
+    font-weight: 500;
+}
+.comment-input{
+    margin-top: 20px;
+}
+.comment div{
+    margin-left: 10px;
+    font-weight: 400;
+    color: #333;
+}
+.comment-input textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.comment-input button{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@media (max-width:768px) {
+    .comment-input textarea{
+        margin-bottom: 5px;
+    }
+}

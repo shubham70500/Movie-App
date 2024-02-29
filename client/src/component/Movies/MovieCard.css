@@ -1,0 +1,27 @@
+
+.MovieList{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    /* max-width: 100em; */
+    flex-wrap: wrap;
+    margin-top:30px ;
+    margin-left: 30px;
+    /* padding: 20px;
+    height: 150rem;
+    margin-top: 10px;
+    margin-bottom: 10px; */
+}
+.card-item{
+    margin-bottom: 50px;
+    /* overflow: hidden; */
+    /* width: 300px; */
+}
+@media (max-width:768px) {
+    .MovieList{
+        flex-direction: column;
+    }
+    .card-item{
+        width: 100%;
+    }
+}

@@ -1,0 +1,50 @@
+.movie-container{
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+.movie-container h2{
+    text-align: center;
+    color: #09054a;
+}
+.movie-container form{
+    display: flex;
+    flex-direction: column;
+}
+.movie-container form label{
+    margin-bottom: 10px;
+}
+.movie-container select{
+    margin-bottom: 10px;
+}
+.movie-container select option{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.movie-container form input{
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.movie-container form button{
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #09054a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.userErr{
+    color: red;
+    font-weight: bold;
+}
+@media screen and (max-width : 768px){
+    .movie-container{
+        width: 100%;
+    }
+}

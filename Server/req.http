@@ -1,0 +1,42 @@
+GET http://localhost:4000/movie-api/movie
+
+###
+
+GET http://localhost:4000/user-api/user
+
+###
+POST http://localhost:4000/user-api/admin
+Content-Type: application/json
+
+{
+    "username":"shubham",
+    "password":"shubham"  
+}
+
+###
+POST http://localhost:4000/user-api/login
+Content-Type: application/json
+
+{
+    "username":"shubham",
+    "password":"shubham"
+}
+
+###
+
+PUT http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "username":"shubham",
+    "email":"subham@gamil.com",
+    "age":40
+}
+
+
+###
+
+DELETE http://localhost:4000/user-api/user/shubham
+
+###
+get http://localhost:4000/sada
