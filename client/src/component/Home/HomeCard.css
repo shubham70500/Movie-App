@@ -28,11 +28,12 @@
     margin-top: 200px;
 }
 .movie-card-content h2{
-    color: #ccc;
+    color: white;
     text-decoration: none;
 }
 .movie-card-content p{
-    color: #ccc;
+    color: white;
+    text-decoration: none;
 }
 .movie-card-content button{
     background-color:#09054a ;
