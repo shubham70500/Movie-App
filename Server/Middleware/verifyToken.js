@@ -10,7 +10,7 @@ function verifyToken(req,res,next){
         const token=bearerToken.split(' ')[1]
         //verify the token
         let decodedToken=jwt.verify(token,process.env.SECRET_KEY)
-        console.log(decodedToken)
+       // console.log(decodedToken)
         next()
 
         }else{

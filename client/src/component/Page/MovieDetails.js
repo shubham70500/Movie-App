@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { userLoginObj } from "../../contextApi/UserContext";
 import CommentSection from "./CommentSection";
 import "./MovieDetails.css";
+import { Toaster, toast } from 'react-hot-toast';
 
 function MovieDetails() {
   const { movie, Trend, Action, MovieList, Upcome,loginStatus } = useContext(userLoginObj);
@@ -25,19 +26,24 @@ function MovieDetails() {
   if (!selectedMovie) {
     return <div>No movie found</div>;
   }
- const handleTrailer=()=>{
+ const handleTrailer= async ()=>{
   if(loginStatus)
   {
      setIsPlay(true);
   }
   else{
-    alert("user not Login , Please Login !!")
-    navigate("/login")
+    toast.error("user not Login , Please Login !!",{
+      duration:2000
+    })
+    setTimeout(() => {
+      navigate('/login');
+  }, 4000)
   }
  }
  // console.log(movie);
   return (
     <div className="movie-details">
+      <Toaster/>
       <div className="details-section">
         <div className="header">
           <h3>{selectedMovie.name}</h3>

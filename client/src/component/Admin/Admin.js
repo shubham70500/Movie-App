@@ -25,10 +25,10 @@ function Admin() {
     let isLoginSuccess = await handleAdminLogin(adminUser);
     if (isLoginSuccess==="Admin-login") {
       
-      toast.success("Admin Login Successfull")
+      toast.success("Admin Login Successfull",{duration:2000})
       setTimeout(() => {
         navigate('/login/admin/moviedata');
-    }, 600)
+    }, 4000)
         
     }
     else if(isLoginSuccess==="Axios-error"){

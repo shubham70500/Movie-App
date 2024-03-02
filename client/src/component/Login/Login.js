@@ -26,10 +26,10 @@ function Login() {
     let isLoginSuccess = await handleUserLogin(user);
     if (isLoginSuccess==="User-login") {
       //setLoginStatus(true)
-      toast.success("Login Successfull")
+      toast.success("Login Successfull",{duration:2000})
       setTimeout(() => {
         navigate('/');
-    }, 600)
+    }, 4000)
        
     }
     else if(isLoginSuccess==="Axios-error"){

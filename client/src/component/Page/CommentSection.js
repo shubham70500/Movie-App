@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { userLoginObj } from "../../contextApi/UserContext";
 import "./CommentSection.css";
+import { Toaster, toast } from 'react-hot-toast';
 
 function CommentSection({ movieId }) {
   let navigate = useNavigate();
@@ -48,16 +49,21 @@ function CommentSection({ movieId }) {
       setNewComment("");
       fetchComment();
 
-    } else {
-
-     
-      alert("User not Logged In , Please Login first");
-      navigate("/login");
+    } 
+    else {
+      toast.error("User not Logged In , Please Login first",{
+        duration:2000,
+      })
+      setTimeout(() => {
+        navigate('/login');
+    }, 3000)
+      
 
     }
   };
   return (
     <div className="comment-section">
+      <Toaster/>
       <h4>Reviews :</h4>
       {comment.map((comment, index) => (
         <div key={index} className="comment">

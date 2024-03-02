@@ -94,7 +94,7 @@ const getAction= async (req,res)=>{
     
     let index=Number(req.params.index)
     let userComment=await Comment.find({id:index})
-     console.log("usercomment",userComment)
+     //console.log("usercomment",userComment)
     res.status(200).send([userComment])
   }
   

@@ -44,7 +44,8 @@ function HomeCard(props) {
    <div className='cont'>
     <Toaster/>
    { props.type==="latest" ? ( movie.map((movie,index)=>(
-        <Link key={index} to={`/movie/popular/${index}`} className="movie-card" style={{backgroundImage : `url(${movie.cover})`}}>
+        <Link key={index} to={`/movie/popular/${index}`} className="movie-card" >
+            <img src={movie.cover} alt={movie.name}/>
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>
             <p>{movie.time}</p>
@@ -52,7 +53,8 @@ function HomeCard(props) {
             </div>
         </Link>
     ))) : props.type==="Drama" ? Trend.map((movie,index)=>(
-        <Link key={index} to={`/movie/trend/${index}`} className="movie-card" style={{backgroundImage : `url(${movie.cover})`}}>
+        <Link key={index} to={`/movie/trend/${index}`} className="movie-card" >
+            <img src={movie.cover} alt={movie.name}/>
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>
             <p>{movie.time}</p>
@@ -60,7 +62,8 @@ function HomeCard(props) {
             </div>
         </Link>
     )) : Action.map((movie,index)=>(
-        <Link key={index} to={`/movie/action/${index}`} className="movie-card" style={{backgroundImage : `url(${movie.cover})`}}>
+        <Link key={index} to={`/movie/action/${index}`} className="movie-card" >
+            <img src={movie.cover} alt={movie.name} />
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>
             <p>{movie.time}</p>

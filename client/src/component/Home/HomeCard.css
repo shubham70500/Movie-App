@@ -1,9 +1,12 @@
 .cont{ 
+
     display: flex;
     overflow-x: auto;
     padding: 20px;
-    scrollbar-width: thin;
-    height: 400px;
+    scrollbar-width: none;
+    height: 550px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .cont::-webkit-scrollbar{
     display: none;
@@ -25,21 +28,26 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .movie-card-content{
-    margin-top: 200px;
+    
+    margin-top: 20px;
 }
 .movie-card-content h2{
-    color: white;
-    text-decoration: none;
+   
+    color: black;
 }
 .movie-card-content p{
-    color: white;
-    text-decoration: none;
+    
+    color: black;
 }
 .movie-card-content button{
     background-color:#09054a ;
     color: white;
     padding: 8px;
     border-radius: 5px;
+}
+.movie-card img{
+    width: 300px;
+    height: 310px;
 }
 
 @media screen and (max-width:768px) {

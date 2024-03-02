@@ -59,11 +59,11 @@ function MovieData() {
    // console.log(res.response.request.status)
     if (res.status === 201) {
 
-      toast.success("Movie Data created");
+      toast.success("Movie Data created",{duration:2000});
 
       setTimeout(() => {
         navigate("/");
-    }, 600)
+    }, 4000)
       
     } 
 

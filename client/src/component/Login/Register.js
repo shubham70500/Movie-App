@@ -29,9 +29,12 @@ function Register() {
         let Validateerror=validate(user)
         if(Object.keys(Validateerror).length===0){
           let res= await axios.post("http://localhost:4000/user-api/user",user)
-          console.log(res)
+          //console.log(res)
           if(res.status===201){
-              navigate("/login")
+            toast.success("Registeration Successfull",{duration:2000})
+              setTimeout(() => {
+                navigate("/login")
+            }, 4000)
           }
           else if(res.status===203){
              setErr('')

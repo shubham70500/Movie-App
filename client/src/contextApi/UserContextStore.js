@@ -6,7 +6,6 @@ import { userLoginObj } from "./UserContext";
 
 function UserContextStore({ children }) {
 
-  let navigate=useNavigate()
   let [loginStatus, setLoginStatus] = useState(false);
   let [curUser, setCurUser] = useState({});
    let [movie, setMovie] = useState([]);
@@ -18,7 +17,7 @@ function UserContextStore({ children }) {
   const handleUserLogin = async (obj) => {
   
       let res = await axios.post("http://localhost:4000/user-api/login",obj)
-      console.log(res)
+     // console.log(res)
         if(res.status===201){
           localStorage.setItem('token',res.data.token)
           setCurUser(res.data.user)
@@ -36,7 +35,7 @@ function UserContextStore({ children }) {
   };
   const handleAdminLogin=async (obj)=>{
     let res = await axios.post("http://localhost:4000/user-api/admin",obj)
-    console.log(res)
+    //console.log(res)
       if(res.status===201){
         localStorage.setItem('admintoken',res.data.token)
         return "Admin-login"

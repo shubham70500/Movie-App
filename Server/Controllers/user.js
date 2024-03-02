@@ -82,7 +82,7 @@ const handleAdmin =async (req,res)=>{
     process.env.SECRET_KEY,
     { expiresIn: 60 }
   );
- console.log(signedToken)
+   //console.log(signedToken)
   res.status(201).send({ message: "Admin login success", token: signedToken });
 }
 
