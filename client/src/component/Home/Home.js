@@ -4,9 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 import axios from "axios";
-// import img1 from "../image/ring.jpg"
 import HomeCard from "./HomeCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userLoginObj } from "../../contextApi/UserContext";
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -31,19 +30,28 @@ const SamplePrevArrow = (props) => {
 
 function Home() {
   let { movie,setMovie } = useContext(userLoginObj);
-// let [movie, setMovie] = useState([]);
+  let navigate=useNavigate()
 
   useEffect(()=>{
     const fetchData =async()=>{
 
       try{
-  
+      // console.log("first")
         let res1=await axios.get("http://localhost:4000/movie-api/movie")
-        setMovie(res1.data[0])
-
+        console.log(res1)
+        if(res1.request.status===200){
+          setMovie(res1.data[0])
+        }
+        else{
+          navigate("/error")
+        }
+       
+      //  console.log("second")
      }
      catch(error){
-       alert(error)
+      //  alert(error)
+      //console.log("third")
+      navigate("/error")
      }
     }
     fetchData()

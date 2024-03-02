@@ -17,7 +17,7 @@ const createUser = async (req,res)=>{
   let existingUser = await User.findOne({ username: req.body.username });
   //user already existed
   if (existingUser !== null) {
-    return res.status(200).send({ message: "User already existed" });
+    return res.status(203).send({ message: "User already existed" });
   }
   //if user not existed, then hash password
   const hashedPassword = await bcryptjs.hash(req.body.password, 6);
@@ -29,20 +29,21 @@ const createUser = async (req,res)=>{
 }
 
 const loginUser= async (req,res)=>{
-  //get user crdentials object from req
+  
+     //get user crdentials object from req
   const userCredentials = req.body;
   //  console.log(req.body)
   //check username
   let user = await User.findOne({ username: userCredentials.username });
   //if invalid username
   if (user === null) {
-    return res.status(201).send({ message: "Invalid username" });
+    return res.status(203).send({ message: "Invalid username" });
   }
   //if username is found, compare passwords
   const result = await bcryptjs.compare(userCredentials.password,user.password);
   //if pasword not matched
   if (result === false) {
-    return res.status(201).send({ message: "Invalid password" });
+    return res.status(203).send({ message: "Invalid password" });
   }
   //Create jwt token and sign it
   const signedToken = jwt.sign(
@@ -51,7 +52,9 @@ const loginUser= async (req,res)=>{
     { expiresIn: 60 }
   );
  // console.log(signedToken)
-  res.status(200).send({ message: "login success", token: signedToken, user: user });
+  res.status(201).send({ message: "login success", token: signedToken, user: user });
+  
+  
 }
 
 
@@ -64,14 +67,14 @@ const handleAdmin =async (req,res)=>{
    let user = await Admin.findOne({ username: userCredentials.username});
    //if invalid username
    if (user === null) {
-     return res.status(201).send({ message: "Invalid Admin" });
+     return res.status(203).send({ message: "Invalid Admin username" });
    }
    
     //if username is found, compare passwords
   let result = await bcryptjs.compare(userCredentials.password,user.password);
   //if pasword not matched
   if (result === false) {
-    return res.status(201).send({ message: "Invalid password" });
+    return res.status(203).send({ message: "Invalid Admin password" });
   }
   //Create jwt token and sign it
   const signedToken = jwt.sign(
@@ -80,7 +83,7 @@ const handleAdmin =async (req,res)=>{
     { expiresIn: 6000 }
   );
  console.log(signedToken)
-  res.status(200).send({ message: "Admin login success", token: signedToken });
+  res.status(201).send({ message: "Admin login success", token: signedToken });
 }
 
 module.exports={getUser,createUser,loginUser,handleAdmin}

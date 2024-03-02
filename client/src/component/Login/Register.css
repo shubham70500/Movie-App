@@ -32,7 +32,7 @@
 }
 .userErr{
     color: red;
-    font-weight: bold;
+    font-weight: lighter;
 }
 @media screen and (max-width : 768px){
     .register-container{

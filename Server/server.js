@@ -19,7 +19,7 @@ app.use("/movie-api",movieApp)
 
 // error handler for sync
 app.use((err,req,res,next)=>{
-    res.send({message:"error occurred",payload:err.message})
+    res.status(400).send({message:"error occurred",payload:err.message})
 })
 
 

@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import "./Register.css";
 import  {useNavigate} from  "react-router-dom"
+import { Toaster, toast } from 'react-hot-toast';
 
 function Register() {
 
   let navigate=useNavigate();
-  let [error, setError] = useState("");
   let [err,setErr]=useState({})
 
   let [user, setUser] = useState({
@@ -25,7 +25,7 @@ function Register() {
   async function handleSubmit(e){
 
         e.preventDefault();
-        console.log(user)
+       // console.log(user)
         let Validateerror=validate(user)
         if(Object.keys(Validateerror).length===0){
           let res= await axios.post("http://localhost:4000/user-api/user",user)
@@ -33,9 +33,12 @@ function Register() {
           if(res.status===201){
               navigate("/login")
           }
-          else {
-              setErr('')
-              setError(res.data.message);
+          else if(res.status===203){
+             setErr('')
+            toast.error(res.data.message);
+          }
+          else {   
+              navigate("/error")
             }
         }
         else{
@@ -45,11 +48,8 @@ function Register() {
 }
   return (
     <div className="register-container">
+      <Toaster/>
       <h2>Register</h2>
-       {/* http req error message */}
-         {error.length !== 0 && (
-              <p className="userErr">{error}</p>
-          )}
       <form onSubmit={handleSubmit}>
         <label>Username</label>
         <input

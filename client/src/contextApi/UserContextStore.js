@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userLoginObj } from "./UserContext";
 
 
 function UserContextStore({ children }) {
 
+  let navigate=useNavigate()
   let [loginStatus, setLoginStatus] = useState(false);
   let [curUser, setCurUser] = useState({});
    let [movie, setMovie] = useState([]);
@@ -14,30 +16,36 @@ function UserContextStore({ children }) {
    let [Upcome,setUpcome]=useState([])
 
   const handleUserLogin = async (obj) => {
+  
+      let res = await axios.post("http://localhost:4000/user-api/login",obj)
+      console.log(res)
+        if(res.status===201){
+          localStorage.setItem('token',res.data.token)
+          setCurUser(res.data.user)
+          setLoginStatus(true)
+          return "User-login"
+        }
+        else if(res.status===200){
+          return "Axios-error"
+        }
+        else{
+          return res.data.message
+        }
     
-    let res = await axios.post("http://localhost:4000/user-api/login",obj)
-        console.log(res)
-          if(res.status===200){
-            localStorage.setItem('token',res.data.token)
-            setCurUser(res.data.user)
-            setLoginStatus(true)
-            return true
-          }
-          else{
-            // setErr(res.data.message)
-            // console.log(err)
-            return false
-          }
+    
   };
   const handleAdminLogin=async (obj)=>{
     let res = await axios.post("http://localhost:4000/user-api/admin",obj)
     console.log(res)
-      if(res.status===200){
+      if(res.status===201){
         localStorage.setItem('admintoken',res.data.token)
-        return true
+        return "Admin-login"
+      }
+      else if(res.status===200){
+        return "Axios-error"
       }
       else{
-        return false
+        return res.data.message
       }
   }
   
