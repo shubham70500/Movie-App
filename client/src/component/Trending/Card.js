@@ -1,26 +1,37 @@
 import React, {useState,useEffect,useContext} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userLoginObj } from "../../contextApi/UserContext";
 import "./Card.css"
 import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 
 function Card(props) {
     
   let {Trend,setTrend,Upcome,setUpcome}=useContext(userLoginObj)
-    // let [Upcome,setUpcome]=useState([])
-    // let [Trend,setTrend]=useState([]);
+  let navigate=useNavigate("/error")
+
     useEffect(()=>{
         const fetchData =async()=>{
     
           try{
+
             let res=await axios.get("http://localhost:4000/movie-api/trending")
-            setTrend(res.data[0])
+            
             let res1=await axios.get("http://localhost:4000/movie-api/upcoming")
-            setUpcome(res1.data[0])
+           
+          //console.log(res1)
+            if(res.request.status===201 && res1.request.status===201){
+              setTrend(res.data[0])
+              setUpcome(res1.data[0])
+            }
+            else
+            {
+              navigate("/error")
+            }
 
          }
          catch(error){
-           alert(error)
+           toast.error(error)
          }
         }
         fetchData()
@@ -28,7 +39,7 @@ function Card(props) {
 
   return (
   <div className='card'>
-      
+      <Toaster/>
    {
     props.type==="trending"? (
     Trend.map((movie,index)=>(

@@ -20,6 +20,7 @@
 }
 .movie-container select{
     margin-bottom: 10px;
+    padding: 10px;
 }
 .movie-container select option{
     padding-top: 10px;
@@ -41,7 +42,7 @@
 }
 .userErr{
     color: red;
-    font-weight: bold;
+    font-weight: lighter;
 }
 @media screen and (max-width : 768px){
     .movie-container{

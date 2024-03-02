@@ -36,21 +36,17 @@ function Home() {
     const fetchData =async()=>{
 
       try{
-      // console.log("first")
-        let res1=await axios.get("http://localhost:4000/movie-api/movie")
-        console.log(res1)
-        if(res1.request.status===200){
-          setMovie(res1.data[0])
+        let res=await axios.get("http://localhost:4000/movie-api/movie")
+       // console.log(res)
+        if(res.request.status===201){
+          setMovie(res.data[0])
         }
         else{
           navigate("/error")
         }
        
-      //  console.log("second")
      }
      catch(error){
-      //  alert(error)
-      //console.log("third")
       navigate("/error")
      }
     }

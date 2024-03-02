@@ -9,7 +9,7 @@ const getAction= async (req,res)=>{
     // here find method returns an array
     let userList=await Action.find()
    //  console.log(userList)
-    res.status(200).send([userList])
+    res.status(201).send([userList])
   }
   
  const setAction=async (req,res)=>{
@@ -23,7 +23,7 @@ const getAction= async (req,res)=>{
     // here find method returns an array
     let userList=await Movie.find()
      // console.log(userList)
-    res.status(200).send([userList])
+    res.status(201).send([userList])
   }
 
   const setMovie=async (req,res)=>{
@@ -38,7 +38,7 @@ const getAction= async (req,res)=>{
     // here find method returns an array
     let userList=await MovieList.find()
     // console.log(userList)
-    res.status(200).send([userList])
+    res.status(201).send([userList])
   }
   
   const setMovieList=async (req,res)=>{
@@ -53,7 +53,7 @@ const getAction= async (req,res)=>{
     // here find method returns an array
     let userList=await Upcoming.find()
     // console.log(userList)
-    res.status(200).send([userList])
+    res.status(201).send([userList])
   }
 
   const setUpcoming=async (req,res)=>{
@@ -68,7 +68,7 @@ const getAction= async (req,res)=>{
     // here find method returns an array
     let userList=await Trending.find()
     // console.log(userList)
-    res.status(200).send([userList])
+    res.status(201).send([userList])
   }
 
   const setTrending=async (req,res)=>{

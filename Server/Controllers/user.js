@@ -80,7 +80,7 @@ const handleAdmin =async (req,res)=>{
   const signedToken = jwt.sign(
     { username: user.username },
     process.env.SECRET_KEY,
-    { expiresIn: 6000 }
+    { expiresIn: 60 }
   );
  console.log(signedToken)
   res.status(201).send({ message: "Admin login success", token: signedToken });
