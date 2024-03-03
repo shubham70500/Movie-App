@@ -55,7 +55,7 @@ const Header = () => {
             </ul>
           
             <button className='toggle' onClick={mobileMenu}>
-              {Mobile ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}
+              {Mobile ? <i className="fa fa-times" aria-hidden="true"></i> : <i className="fa fa-bars" aria-hidden="true"></i>}
             </button>
           </nav>
         </div>

@@ -29,7 +29,7 @@ function Login() {
       toast.success("Login Successfull",{duration:2000})
       setTimeout(() => {
         navigate('/');
-    }, 4000)
+    }, 3000)
        
     }
     else if(isLoginSuccess==="Axios-error"){
