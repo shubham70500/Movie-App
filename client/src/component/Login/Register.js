@@ -72,7 +72,7 @@ function Register() {
         {err.password && <p className="userErr">{err.password}</p>}
         <label>Email</label>
         <input
-          type="email"
+          type="text"
           name="email"
           onChange={handleUser}
           placeholder="Enter your Email"
@@ -104,6 +104,9 @@ function validate(user) {
   }
   if (!user.email) {
     er.email = "Email is Required";
+  }
+  else if(!user.email.includes("@") || !user.email.includes(".",user.email.indexOf("@")) ){
+    er.email="Enter Valid Email Address"
   }
   if (!user.dob) {
     er.dob = "Date of Birth is Required";

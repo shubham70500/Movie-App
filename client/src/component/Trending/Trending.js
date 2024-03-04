@@ -6,11 +6,11 @@ function Trending() {
   return (
     <>
       <div className="trending">
-        <h3>Top 5 Trending Movies</h3>
+        <h3>Top  Trending Movies</h3>
         <Card type="trending" />
       </div>
       <div className="trending">
-        <h3>Top 5 Upcoming Movies</h3>
+        <h3>Top  Upcoming Movies</h3>
         <Card type="upcoming" />
       </div>
     </>

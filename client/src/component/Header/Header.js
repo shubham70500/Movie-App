@@ -14,12 +14,15 @@ const Header = () => {
   function mobileMenu(){
     setMobile(!Mobile)
   }
+  window.onbeforeunload=function(e){
+    localStorage.clear()
+  }
   const handleLogout=()=>{
      
     let token = localStorage.getItem("token");
     localStorage.removeItem("token",token)
     setLoginStatus(false)
-    //alert("")
+
   }
 
   return (

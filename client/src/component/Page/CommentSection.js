@@ -43,7 +43,7 @@ function CommentSection({ movieId }) {
       "http://localhost:4000/movie-api/comment",
       upadteComments
     );
-     console.log(res);
+    // console.log(res);
     if (res.request.status===201) {
 
       setNewComment("");

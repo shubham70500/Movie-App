@@ -31,7 +31,7 @@
     cursor: pointer;
 }
 .userErr{
-    color: red;
+    color: #FF0000;
     font-weight: lighter;
 }
 @media screen and (max-width : 768px){
