@@ -59,11 +59,11 @@ function MovieData() {
    // console.log(res.response.request.status)
     if (res.status === 201) {
 
-      toast.success("Movie Data created",{duration:2000});
+      toast.success("Movie Data created",{duration:1500});
 
       setTimeout(() => {
         navigate("/");
-    }, 4000)
+    }, 3000)
       
     } 
 
@@ -73,11 +73,11 @@ function MovieData() {
     }
     else{
 
-      toast.error("Admin  Logged Out , Please Login first");
+      toast.error("Admin  Logged Out , Please Login first",1500);
 
       setTimeout(() => {
         navigate("/login/admin");
-    }, 600)
+    }, 3000)
     }
   }
   else{

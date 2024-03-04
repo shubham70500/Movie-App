@@ -33,11 +33,11 @@ function MovieDetails() {
   }
   else{
     toast.error("user not Login , Please Login !!",{
-      duration:2000
+      duration:1500
     })
     setTimeout(() => {
       navigate('/login');
-  }, 4000)
+  }, 3000)
   }
  }
  // console.log(movie);

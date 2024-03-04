@@ -52,7 +52,7 @@ function CommentSection({ movieId }) {
     } 
     else {
       toast.error("User not Logged In , Please Login first",{
-        duration:2000,
+        duration:1500,
       })
       setTimeout(() => {
         navigate('/login');

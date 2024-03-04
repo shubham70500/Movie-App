@@ -31,10 +31,10 @@ function Register() {
           let res= await axios.post("http://localhost:4000/user-api/user",user)
           //console.log(res)
           if(res.status===201){
-            toast.success("Registeration Successfull",{duration:2000})
+            toast.success("Registeration Successfull",{duration:1500})
               setTimeout(() => {
                 navigate("/login")
-            }, 4000)
+            }, 3000)
           }
           else if(res.status===203){
              setErr('')

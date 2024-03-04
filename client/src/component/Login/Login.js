@@ -26,7 +26,7 @@ function Login() {
     let isLoginSuccess = await handleUserLogin(user);
     if (isLoginSuccess==="User-login") {
       //setLoginStatus(true)
-      toast.success("Login Successfull",{duration:2000})
+      toast.success("Login Successfull",{duration:1500})
       setTimeout(() => {
         navigate('/');
     }, 3000)
