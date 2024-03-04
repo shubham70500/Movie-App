@@ -17,14 +17,20 @@ mongoose.connect(local_url)
 const userSchema=new mongoose.Schema({  
     username: {
         type: String,
-        required: [true, "Username is required, but missed"],
+        required: [true, "Username is required"],
       },
       password: {
         type: String,
         required: [true, "Password is required"],
       },
-      email: String,
-      dob: Date,
+      email: {
+        type: String,
+        required: [true, "Email is required"]
+      },
+      dob: {
+        type: Date,
+        required: [true, "Date of Birth is required"]
+      }
     })
 
 // create model(class) for userSchema
@@ -58,8 +64,14 @@ const movieSchema=new mongoose.Schema({
   const Comment=mongoose.model('comment',CommentSchema)
 
   const AdminSchema= new mongoose.Schema({
-    username:String,
-    password:String
+    username:{
+      type:String,
+      required: [true, "Username is required"]
+    },
+    password:{
+      type: String,
+      required: [true, "Password is required"]
+    }
   })
   const Admin=mongoose.model('admin',AdminSchema)
 
