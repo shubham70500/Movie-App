@@ -13,7 +13,8 @@ function verifyToken(req,res,next){
        // console.log(decodedToken)
         next()
 
-        }else{
+        }
+        else{
             res.status(403).send({message:"Unauthorised access"})
         }
 

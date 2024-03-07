@@ -11,13 +11,15 @@ function UserContextStore({ children }) {
   let [MovieList, setMovieList] = useState([]);
   let [Upcome, setUpcome] = useState([]);
 
+
   const handleUserLogin = async (obj) => {
     let res = await axios.post("http://localhost:4000/user-api/login", obj);
     // console.log(res)
     if (res.status === 201) {
       localStorage.setItem("token", res.data.token);
-      setCurUser(res.data.user);
-      setLoginStatus(true);
+      localStorage.setItem("username",res.data.user.username)
+      localStorage.setItem("status",true)
+
       return "User-login";
     } else if (res.status === 200) {
       return "Axios-error";
@@ -25,6 +27,8 @@ function UserContextStore({ children }) {
       return res.data.message;
     }
   };
+
+  
   const handleAdminLogin = async (obj) => {
     let res = await axios.post("http://localhost:4000/user-api/admin", obj);
     //console.log(res)

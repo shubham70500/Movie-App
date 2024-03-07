@@ -29,6 +29,7 @@ function Login() {
       toast.success("Login Successfull",{duration:1500})
       setTimeout(() => {
         navigate('/');
+        // window.location.href="/"
     }, 3000)
        
     }

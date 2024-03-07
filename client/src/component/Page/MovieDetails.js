@@ -4,46 +4,64 @@ import { useNavigate, useParams } from "react-router-dom";
 import { userLoginObj } from "../../contextApi/UserContext";
 import CommentSection from "./CommentSection";
 import "./MovieDetails.css";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 
 function MovieDetails() {
-  const { movie, Trend, Action, MovieList, Upcome,loginStatus } = useContext(userLoginObj);
-  const { type, index } = useParams();
-  let [isPlay,setIsPlay]=useState(false);
-  let navigate=useNavigate();
+  const { movie, Trend, Action, MovieList, Upcome } = useContext(userLoginObj);
+  const { type, id } = useParams();
+  let [isPlay, setIsPlay] = useState(false);
+  let navigate = useNavigate();
   // get the movie index from the url parameter
   const selectedMovie =
     type === "trend"
-      ? Trend[index]
+      ? Trend[id-1]
       : type === "popular"
-      ? movie[index]
+      ? movie[id-1]
       : type === "action"
-      ? Action[index]
+      ? Action[id-1]
       : type === "upcoming"
-      ? Upcome[index]
-      : MovieList[index];
+      ? Upcome[id-1]
+      : MovieList[id-1];
 
+  
   if (!selectedMovie) {
     return <div>No movie found</div>;
   }
- const handleTrailer= async ()=>{
-  if(loginStatus)
-  {
-     setIsPlay(true);
-  }
-  else{
-    toast.error("user not Login , Please Login !!",{
-      duration:1500
-    })
-    setTimeout(() => {
-      navigate('/login');
-  }, 3000)
-  }
- }
- // console.log(movie);
+  const handleTrailer = async () => {
+   
+    // get token from local/session storage
+    let token = localStorage.getItem("token");
+    // add token to the header of request object
+    let axiosWithToken = axios.create({
+      baseURL: "http://localhost:4000",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    let res = await axiosWithToken.get(
+      "http://localhost:4000/movie-api/trailer"
+    );
+    // console.log(res);
+    if (res.request.status === 201) {
+      setIsPlay(true);
+    } else {
+  
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
+      localStorage.setItem("status",false)
+      toast.error("user not Login , Please Login !!", {
+        duration: 1500,
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    }
+  };
+  // console.log(movie);
   return (
     <div className="movie-details">
-      <Toaster/>
+      <Toaster />
       <div className="details-section">
         <div className="header">
           <h3>{selectedMovie.name}</h3>
@@ -84,14 +102,16 @@ function MovieDetails() {
           <p>{selectedMovie.date}</p>
         </div>
 
-        <button  onClick={handleTrailer} className="watch-now-btn">
-          {
-            isPlay ? <a href={selectedMovie.video} rel="noreferrer" target="_blank">
-            Watch Trailer
-          </a> :"Watch Trailer"
-          } 
+        <button onClick={handleTrailer} className="watch-now-btn">
+          {isPlay ? (
+            <a href={selectedMovie.video} rel="noreferrer" target="_blank">
+              Watch Trailer
+            </a>
+          ) : (
+            "Watch Trailer"
+          )}
         </button>
-        <CommentSection movieId={selectedMovie.id} />
+        <CommentSection movieId={selectedMovie._id} />
       </div>
       <div className="image">
         <img src={selectedMovie.cover} alt={selectedMovie.name} />

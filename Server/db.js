@@ -57,6 +57,7 @@ const movieSchema=new mongoose.Schema({
   const Upcoming=mongoose.model('upcoming',movieSchema)
   
   const CommentSchema= new mongoose.Schema({
+    type:String,
     id:Number,
     user:String,
     text:String

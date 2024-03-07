@@ -36,7 +36,7 @@ function MovieCard() {
       <Toaster/>
    {
     MovieList.map((movie,index)=>(
-        <Link key={index} to={`/movie/movieList/${index}`} className="card-item" >
+        <Link key={index} to={`/movie/movieList/${movie.id}`} className="card-item" >
             <img src={movie.cover} alt={movie.name}/>
             <div className='card-content'>
             <h2>{movie.name}</h2>

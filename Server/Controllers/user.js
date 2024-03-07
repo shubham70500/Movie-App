@@ -1,4 +1,4 @@
-const {User,Action,Movie,MovieList,Trending,Upcoming,Comment,Admin} =require("../db")
+const {User,Admin} =require("../db")
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require('dotenv').config()
@@ -49,7 +49,7 @@ const loginUser= async (req,res)=>{
   const signedToken = jwt.sign(
     { username: user.username },
     process.env.SECRET_KEY,
-    { expiresIn: 60 }
+    { expiresIn: "1d" }
   );
  // console.log(signedToken)
   res.status(201).send({ message: "login success", token: signedToken, user: user });
@@ -80,7 +80,7 @@ const handleAdmin =async (req,res)=>{
   const signedToken = jwt.sign(
     { username: user.username },
     process.env.SECRET_KEY,
-    { expiresIn: 60 }
+    { expiresIn: 600 }
   );
    //console.log(signedToken)
   res.status(201).send({ message: "Admin login success", token: signedToken });

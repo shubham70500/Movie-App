@@ -31,7 +31,7 @@ function App() {
         <Route path="/login/register" element={<Register/>}/>
         <Route path="/login/admin" element={<Admin/>}/>
         <Route path="/login/admin/moviedata" element={<MovieData/>}/>
-        <Route path="/movie/:type/:index" element={<MovieDetails/>}/>
+        <Route path="/movie/:type/:id" element={<MovieDetails/>}/>
         <Route path="/*" element={<PageNotFound/>}/>
         <Route path="/error" element={<Error/>}/>
       </Routes>

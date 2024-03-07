@@ -34,6 +34,8 @@ header {
     display: none;
   }
   .a {
+    color: black;
+    font-weight: bold;
     text-decoration: none;
   }
   ul {
@@ -41,15 +43,42 @@ header {
   }
   .flexSB {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    gap: 20px;
+  
   }
   .flex {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .container {
     max-width: 90%;
     margin: auto;
+  }
+
+
+  .login-btn{
+     padding: 0.5rem 1rem; 
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease ;
+
+  }
+  .login-btn:hover{
+    background-color: #0056b3;
+  }
+  .login-content{
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: black;
   }
   @media only screen and (max-width: 768px) {
     header nav .flexSB {
@@ -64,8 +93,8 @@ header {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: #292626;
-      width: 35%;
+      background-color: #706c6c;
+      width: 45%;
       height: 100vh;
       z-index: 9999;
     }

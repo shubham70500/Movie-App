@@ -1,7 +1,7 @@
 const exp=require("express")
 const movieApp=exp.Router();
 const expressAsyncHandler=require('express-async-handler')
-const {getAction,setAction,getMovie,setMovie,getComment,getMovieList,setMovieList, setUpcoming, getTrending,setTrending,getUpcoming,setcomment}=require("../Controllers/movie")
+const {getAction,setAction,getMovie,setMovie,getComment,getMovieList,getTrailer,setMovieList, setUpcoming, getTrending,setTrending,getUpcoming,setcomment}=require("../Controllers/movie")
 const verifyToken = require('../Middleware/verifyToken')
 
 
@@ -39,6 +39,9 @@ movieApp.post("/trending",verifyToken,expressAsyncHandler(setTrending))
 movieApp.post("/comment",verifyToken,expressAsyncHandler(setcomment))
 
 // get Comment
-movieApp.get("/comment/:index",expressAsyncHandler(getComment))
+movieApp.get("/comment/:type/:id",expressAsyncHandler(getComment))
+
+// get trailer
+movieApp.get("/trailer",verifyToken,expressAsyncHandler(getTrailer))
 
 module.exports=movieApp

@@ -68,7 +68,7 @@ function Home() {
           <Slider {...settings}>
             {movie.map((movie, index) => (
               <div key={index} className="carousel-item">
-                <Link to={`/movie/popular/${index}`}>
+                <Link to={`/movie/popular/${movie.id}`}>
                   <img src={movie.cover} alt={movie.name} />
                 </Link>
               </div>

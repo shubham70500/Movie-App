@@ -1,38 +1,54 @@
-import React, { useContext, useState } from "react"
+import React, {  useEffect, useState } from "react"
 import "./Header.css"
  import logo from "../image/logo.png"
-import { Link, } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { userLoginObj } from "../../contextApi/UserContext"
+import { Link, useNavigate, } from "react-router-dom"
+
 
 
 const Header = () => {
-  let {loginStatus,setLoginStatus}=useContext(userLoginObj)
-  const [Mobile, setMobile] = useState(false)
   let navigate=useNavigate()
+
+  const [Mobile, setMobile] = useState(false)
+  const [isLoggedIn,setIsloggedIn]=useState(false)
 
   function mobileMenu(){
     setMobile(!Mobile)
   }
-  window.onbeforeunload=function(e){
-    localStorage.clear()
-  }
-  const handleLogout=()=>{
-     
-    let token = localStorage.getItem("token");
-    localStorage.removeItem("token",token)
-    setLoginStatus(false)
 
-  }
+ 
+  
+  const checkedLoggedIn = () => {
+    //console.log("Inside checkedLoggedIn");
+    let status = localStorage.getItem("status");
+    //console.log("Status:", status);
+    setIsloggedIn(status === "true");
+  };
+
+      const handleLogout=()=>{
+     
+        localStorage.removeItem("token")
+        localStorage.removeItem("username")
+        localStorage.setItem("status",false)
+        // window.location.href="/login"
+        navigate("/login")
+    
+      }
+    
+      useEffect(() => {
+        //console.log("Inside useEffect");
+        checkedLoggedIn();
+      }, [handleLogout]);
+  
 
   return (
     <>
       <header>
-        <div className='container flexSB'>
-          <nav className='flexSB'>
+        <div className='container flex'>
             <div className='logo'>
-              <img src={logo} alt='Logo' />
+              <Link to="/"><img src={logo} alt='Logo' /></Link>
             </div>
+            <nav className='flexSB'>
+            
             <ul className={Mobile ? "navMenu-list" : "flexSB"}>
               <li>
               <Link className="a" to="/">Home</Link>
@@ -46,17 +62,16 @@ const Header = () => {
               <li>
               <Link className="a" to="/about">About</Link>
               </li>
-              
               {
-                loginStatus ? <li>
-                <Link className="a" onClick={handleLogout}>Logout</Link>
-                </li>:<li>
-                <Link className="a" to="/login">Login</Link>
+                isLoggedIn===true ? <li>
+                <button className="login-btn"><Link className="login-content" onClick={handleLogout} >Logout</Link></button>
+                </li> : <li>
+                <button className="login-btn"><Link className="login-content" to="/login">Login</Link></button>
               </li>
               }
               
             </ul>
-          
+            
             <button className='toggle' onClick={mobileMenu}>
               {Mobile ? <i className="fa fa-times" aria-hidden="true"></i> : <i className="fa fa-bars" aria-hidden="true"></i>}
             </button>

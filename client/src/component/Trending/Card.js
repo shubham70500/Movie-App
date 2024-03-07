@@ -43,7 +43,7 @@ function Card(props) {
    {
     props.type==="trending"? (
     Trend.map((movie,index)=>(
-        <Link key={index} to={`/movie/trend/${index}`} className="card-item" >
+        <Link key={index} to={`/movie/trend/${movie.id}`} className="card-item" >
             <img src={movie.cover} alt={movie.name}/>
             <div className='card-content'>
             <h2>{movie.name}</h2>
@@ -52,7 +52,7 @@ function Card(props) {
             </div>
         </Link>
     ))):(Upcome.map((movie,index)=>(
-      <Link key={index} to={`/movie/upcoming/${index}`} className="card-item" >
+      <Link key={index} to={`/movie/upcoming/${movie.id}`} className="card-item" >
           <img src={movie.cover} alt={movie.name}/>
           <div className='card-content'>
           <h2>{movie.name}</h2>

@@ -92,10 +92,15 @@ const getAction= async (req,res)=>{
   const getComment=async (req,res)=>{
     // here find method returns an array
     
-    let index=Number(req.params.index)
-    let userComment=await Comment.find({id:index})
+    let index=Number(req.params.id)
+    let type=req.params.type
+    let userComment=await Comment.find({type:type,id:index})
      //console.log("usercomment",userComment)
     res.status(200).send([userComment])
   }
+
+  const getTrailer =async(req,res)=>{
+    res.status(201).send({message:"Trailer"})
+  }
   
-  module.exports={getAction,setAction,getMovie,setMovie,getComment,getMovieList,setMovieList, setUpcoming, getTrending,setTrending,getUpcoming,setcomment}
+  module.exports={getAction,setAction,getMovie,setMovie,getTrailer,getComment,getMovieList,setMovieList, setUpcoming, getTrending,setTrending,getUpcoming,setcomment}

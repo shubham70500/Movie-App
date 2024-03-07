@@ -44,7 +44,7 @@ function HomeCard(props) {
    <div className='cont'>
     <Toaster/>
    { props.type==="latest" ? ( movie.map((movie,index)=>(
-        <Link key={index} to={`/movie/popular/${index}`} className="movie-card" >
+        <Link key={index} to={`/movie/popular/${movie.id}`} className="movie-card" >
             <img src={movie.cover} alt={movie.name}/>
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>
@@ -53,7 +53,7 @@ function HomeCard(props) {
             </div>
         </Link>
     ))) : props.type==="Drama" ? Trend.map((movie,index)=>(
-        <Link key={index} to={`/movie/trend/${index}`} className="movie-card" >
+        <Link key={index} to={`/movie/trend/${movie.id}`} className="movie-card" >
             <img src={movie.cover} alt={movie.name}/>
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>
@@ -62,7 +62,7 @@ function HomeCard(props) {
             </div>
         </Link>
     )) : Action.map((movie,index)=>(
-        <Link key={index} to={`/movie/action/${index}`} className="movie-card" >
+        <Link key={index} to={`/movie/action/${movie.id}`} className="movie-card" >
             <img src={movie.cover} alt={movie.name} />
             <div className='movie-card-content'>
             <h2>{movie.name}</h2>

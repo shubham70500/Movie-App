@@ -2,6 +2,7 @@ const exp=require('express')
 const app=exp()
 const path=require('path')
 const cors=require("cors")
+
 // connect with client side
 app.use(exp.static(path.join(__dirname,"../client/build")))
 
@@ -13,13 +14,14 @@ const movieApp=require("./APIs/movie-api")
 require('dotenv').config
 
 app.use(cors({origin:'http://localhost:3000'}))
+
 app.use(exp.json())
 app.use("/user-api",userApp)
 app.use("/movie-api",movieApp)
 
 // error handler for sync
 app.use((err,req,res,next)=>{
-    res.status(203).send({message:"error occurred",payload:err.message})
+    res.send({message:"error occurred",payload:err.message})
 })
 
 
