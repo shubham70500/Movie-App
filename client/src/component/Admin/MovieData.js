@@ -85,7 +85,7 @@ function MovieData() {
   }
   };
   return (
-    <>
+    <div className="movie-background">
       <div className="movie-container">
         <Toaster/>
         <h2>Movie Details</h2>
@@ -217,7 +217,7 @@ function MovieData() {
           <button>Submit</button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

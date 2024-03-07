@@ -12,10 +12,7 @@ header {
     margin-right: 30px;
     margin-left: 15px;
   }
-  .a {
-    color: #fff;
-    margin-left: 30px;
-  }
+  
   header i {
     width: 40px;
     height: 40px;
@@ -38,6 +35,9 @@ header {
     font-weight: bold;
     text-decoration: none;
   }
+  .a:hover{
+    color: #474242;
+  }
   ul {
     list-style-type: none;
   }
@@ -45,7 +45,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
   
   }
   .flex {

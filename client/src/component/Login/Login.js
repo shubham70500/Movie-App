@@ -46,6 +46,7 @@ function Login() {
   }
 };
   return (
+    <div className='login-background'>
     <div className='login-container'>
       <Toaster/>
       <h2>Login</h2>
@@ -61,6 +62,7 @@ function Login() {
         
         <div>New User, <Link className='register' to="/login/register"><span> Sign up </span></Link>Here, Click here <Link className='register' to="/login/admin"><span> Admin </span></Link> </div> 
         
+    </div>
     </div>
   )
 }

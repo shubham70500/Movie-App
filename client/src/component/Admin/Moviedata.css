@@ -6,6 +6,13 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 100px;
+    background: rgb(231,231,246);
+    background: linear-gradient(90deg, rgba(231,231,246,1) 0%, rgba(235,235,237,0.6502976190476191) 35%);
+}
+.movie-background{
+
+    background-image: url("../image/back.png"); 
+
 }
 .movie-container h2{
     text-align: center;

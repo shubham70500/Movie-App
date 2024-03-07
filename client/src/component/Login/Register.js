@@ -50,6 +50,7 @@ function Register() {
     
 }
   return (
+    <div className="register-background">
     <div className="register-container">
       <Toaster/>
       <h2>Register</h2>
@@ -88,6 +89,7 @@ function Register() {
         {err.dob && <p className="userErr">{err.dob}</p>}
         <button>Register</button>
       </form>
+    </div>
     </div>
   );
 }

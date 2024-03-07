@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { userLoginObj } from '../../contextApi/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 
 function Admin() {
@@ -45,6 +45,7 @@ function Admin() {
   }
  
   return (
+    <div className='login-background'>
     <div className='login-container'>
       <Toaster/>
       <h2>Admin</h2>
@@ -56,7 +57,9 @@ function Admin() {
         <input type="password" name='password' onChange={handleUser} placeholder="Enter your password" />
         {err.password && <p className="userErr">{err.password}</p>}
         <button>Admin</button>
-      </form>   
+      </form> 
+      <div>New User, <Link className='register' to="/login/register"><span> Sign up </span></Link>Here </div>  
+    </div>
     </div>
   )
 }
