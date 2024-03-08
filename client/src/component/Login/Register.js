@@ -68,6 +68,7 @@ function Register() {
         <input
           type="password"
           name="password"
+          minLength="6"
           onChange={handleUser}
           placeholder="Enter your password"
         />
@@ -106,9 +107,7 @@ function validate(user) {
   if (!user.password) {
     er.password = "Password is Required";
   }
-  // else if(user.password.length>6){
-  //   er.password="Min length should be 6 character"
-  // }
+
   if (!user.email) {
     er.email = "Email is Required";
   }
