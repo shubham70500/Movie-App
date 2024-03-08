@@ -16,6 +16,7 @@ function Register() {
     dob: "",
   });
   
+  const currDate=new Date().toISOString().split("T")[0];
   function handleUser(event) {
     let name = event.target.name;
     let value = event.target.value;
@@ -83,6 +84,7 @@ function Register() {
         <input
           type="date"
           name="dob"
+          max={currDate}
           onChange={handleUser}
           placeholder="Enter your Date of Birth"
         />
@@ -104,6 +106,9 @@ function validate(user) {
   if (!user.password) {
     er.password = "Password is Required";
   }
+  // else if(user.password.length>6){
+  //   er.password="Min length should be 6 character"
+  // }
   if (!user.email) {
     er.email = "Email is Required";
   }
